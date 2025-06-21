@@ -35,15 +35,12 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
     Route::post('/orders/{order}/status', [AdminOrderController::class, 'updateStatus'])->name('orders.updateStatus');
 });
 
-// Admin Routes
+
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
     // Outlet Routes
     Route::resource('outlets', AdminOutletController::class);
 
-    // Order Routes
     Route::resource('orders', AdminOrderController::class);
-
-    // Additional Order Actions
     Route::post('/orders/{order}/accept', [AdminOrderController::class, 'accept'])
         ->name('orders.accept');
     Route::post('/orders/{order}/cancel', [AdminOrderController::class, 'cancel'])
@@ -54,5 +51,5 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
 
 // Super Admin Routes
 Route::prefix('super-admin')->name('super-admin.')->middleware(['auth', 'super_admin'])->group(function () {
-   
+
 });
