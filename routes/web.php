@@ -54,28 +54,5 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'admin'])->group(fun
 
 // Super Admin Routes
 Route::prefix('super-admin')->name('super-admin.')->middleware(['auth', 'super_admin'])->group(function () {
-    // Dashboard
-    Route::get('/dashboard', [\App\Http\Controllers\SuperAdmin\DashboardController::class, 'index'])
-        ->name('dashboard');
-
-    // User Management
-    Route::resource('users', \App\Http\Controllers\SuperAdmin\UserController::class);
-
-    // System Settings
-    Route::get('/settings', [\App\Http\Controllers\SuperAdmin\SettingController::class, 'index'])
-        ->name('settings.index');
-    Route::put('/settings', [\App\Http\Controllers\SuperAdmin\SettingController::class, 'update'])
-        ->name('settings.update');
-
-    // Audit Logs
-    Route::get('/audit-logs', [\App\Http\Controllers\SuperAdmin\AuditLogController::class, 'index'])
-        ->name('audit-logs.index');
-
-    // Backup Management
-    Route::get('/backups', [\App\Http\Controllers\SuperAdmin\BackupController::class, 'index'])
-        ->name('backups.index');
-    Route::post('/backups/create', [\App\Http\Controllers\SuperAdmin\BackupController::class, 'create'])
-        ->name('backups.create');
-    Route::delete('/backups/{backup}', [\App\Http\Controllers\SuperAdmin\BackupController::class, 'destroy'])
-        ->name('backups.destroy');
+   
 });
